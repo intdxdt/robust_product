@@ -4,7 +4,7 @@ extern crate robust_scale;
 use robust_sum::robust_sum as rsum;
 use robust_scale::robust_scale as rscale;
 
-///Robust Product
+///Robust product
 pub fn product(a: &[f64], b: &[f64]) -> Vec<f64> {
     if (a.len()) == 1 {
         return rscale(b, a[0]);
@@ -30,7 +30,25 @@ pub fn product(a: &[f64], b: &[f64]) -> Vec<f64> {
 
 
 #[cfg(test)]
-mod robust_prod {
+mod test_robust_prod {
+    use super::product;
+
     #[test]
-    fn rproduct() {}
+    fn test_product() {
+        fn pow2(n: i32) -> f64 {
+            return 2f64.powi(n);
+        }
+
+        for i in -20..(20 + 1) {
+            for j in -20..(20 + 1) {
+                let (fi, fj) = (i as f64, j as f64);
+                assert_eq!(product(&vec!(fi), &vec!(fj)), [fi * fj]);
+            }
+        }
+
+        assert_eq!(product(
+            &vec!(pow2(-50), pow2(50)),
+            &vec!(pow2(-50), pow2(50))
+        ), [pow2(-100), pow2(1), pow2(100)]);
+    }
 }
