@@ -5,8 +5,8 @@ use robust_sum::robust_sum as rsum;
 use robust_scale::robust_scale as rscale;
 
 ///Robust product
-pub fn product(a: &[f64], b: &[f64]) -> Vec<f64> {
-    if (a.len()) == 1 {
+pub fn robust_product(a: &[f64], b: &[f64]) -> Vec<f64> {
+    if a.len() == 1 {
         return rscale(b, a[0]);
     }
     if b.len() == 1 {
@@ -31,7 +31,7 @@ pub fn product(a: &[f64], b: &[f64]) -> Vec<f64> {
 
 #[cfg(test)]
 mod test_robust_prod {
-    use super::product;
+    use super::robust_product as product;
 
     #[test]
     fn test_product() {
