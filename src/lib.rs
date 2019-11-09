@@ -46,9 +46,12 @@ mod test_robust_prod {
             }
         }
 
-        assert_eq!(product(
-            &vec!(pow2(-50), pow2(50)),
-            &vec!(pow2(-50), pow2(50))
-        ), [pow2(-100), pow2(1), pow2(100)]);
+        assert_eq!(
+            product(
+                &vec!(pow2(-50), pow2(50)),
+                &vec!(pow2(-50), pow2(50))
+            ),
+            [pow2(-100), pow2(1), pow2(100)]
+        );
     }
 }
