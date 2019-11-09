@@ -13,19 +13,19 @@ pub fn robust_product(a: &[f64], b: &[f64]) -> Vec<f64> {
         return rscale(a, b[0]);
     }
     if a.len() == 0 || b.len() == 0 {
-        return vec!(0f64);
+        return vec!(0.0);
     }
-    let mut r = vec!(0f64);
+    let mut r = vec!(0.0);
     if a.len() < b.len() {
         for i in 0..a.len() {
-            r = rsum(&r, &rscale(&b, a[i]))
+            r = rsum(&r, &rscale(&b, a[i]));
         }
     } else {
         for i in 0..b.len() {
-            r = rsum(&r, &rscale(&a, b[i]))
+            r = rsum(&r, &rscale(&a, b[i]));
         }
     }
-    return r;
+    r
 }
 
 
